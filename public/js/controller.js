@@ -11,7 +11,7 @@ var map;
 			console.log(text);
 		}
 		console.log(window.location.hostname);
-		$http.get('http://localhost:3000/api/activities')
+		$http.get('api/activities')
 		.then(function(result) {
 			console.dir(result);
 			$scope.activities = result.data;
@@ -23,7 +23,7 @@ var map;
   		};
 
   		function getActivity(id){
-  			$http.get('http://localhost:3000/api/activity/',{ params: { id: id }})
+  			$http.get('api/activity/',{ params: { id: id }})
   			.then(function(result) {
   				$scope.selectedActivity = result.data;
   				loadActivity(result.data);
