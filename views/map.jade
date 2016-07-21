@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title #{file}
+    meta(name='viewport', content='initial-scale=1.0')
+    meta(charset='utf-8')
+    style.
+      html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      }
+      #map {
+      height: 50%;
+      width: 50%;
+      }
+  body
+    #map
+    script.
+      var path = 'http://80.223.180.76:3000/gpx/'.concat(#{file});
+      console.log(path);
+      console.log('#{file}');
+      var map;
+      function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat:60.17, lng: 24.9},
+      zoom: 8
+      });
+      var ctaLayer = new google.maps.KmlLayer({
+      url: path,
+      map: map
+      });
+      }
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQ9cmXz_DKbXxMQV4I9hgSq6biyU1faA&callback=initMap', async='', defer='')

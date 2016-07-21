@@ -1,0 +1,25 @@
+doctype html
+html(ng-app="app")
+  head
+    script(src="https://www.gstatic.com/charts/loader.js")
+    script(src="/js/angular.min.js")
+    script(src="/js/controller.js")
+    //script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQ9cmXz_DKbXxMQV4I9hgSq6biyU1faA')
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
+
+    script.
+      $(function(){
+        var topPadding = $('#navbar').height();
+        document.documentElement.style.paddingTop = topPadding + "px";
+      })
+
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(id=id)
+    div
+      ul#navbar
+        li.activities: a(href="/activities") Activities
+        li.upload: a(href="/upload") Upload
+        li: a(href="#nav3") Nav 3
+    h1= title
+    block content

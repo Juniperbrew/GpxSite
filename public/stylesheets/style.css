@@ -1,0 +1,92 @@
+body {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #DADADA;
+}
+
+a {
+  color: white;
+}
+
+#map {
+  z-index: 1;
+}
+
+ul#navbar{
+	list-style: none;
+	margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #555;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+ul#navbar li {
+	float: left;
+}
+
+ul#navbar li a {
+  display: block;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul#navbar li:not(.active):hover {
+  background-color: #111;
+  transition: 0.5s;
+  color: white;
+  cursor: pointer;
+}
+
+#activities ul#navbar li.activities {
+    background-color: #4CAF50;
+    color: white;
+}
+#upload ul#navbar li.upload {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul#activity-list li:hover {
+  background-color: #0066ff;
+  transition: 0.2s;
+  color: white;
+  cursor: pointer;
+}
+
+ul#activity-list li{
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  margin: 0;
+}
+
+ul#activity-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+}
+
+#content {
+  flex: 1;
+  padding: 1em;
+  background-color: #3EB2FB;
+}
+
+#sidebar {
+  flex: 0 0 12em;
+  background-color: #2696FB;
+}
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
