@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+  meta(name='viewport', content='initial-scale=1.0')
+  meta(charset='utf-8')
+
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQ9cmXz_DKbXxMQV4I9hgSq6biyU1faA&callback=initMap"
+    async defer)
+  style.
+    #map {
+    height: 600px;
+    width: 800px;
+    }
+
+  #map

@@ -7,21 +7,11 @@ var bodyParser = require('body-parser');
 var serveIndex = require('serve-index')
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var gpx = require('./routes/gpx');
 var map = require('./routes/map');
 var api = require('./routes/api');
 
-var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
-var url = 'mongodb://localhost:27017/gpx';
-
-//Test DB
-MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected correctly to server.");
-  db.close();
-});
 
 var app = express();
 
@@ -53,15 +43,7 @@ app.use(express.static(path.join(__dirname, 'public') , options));
 app.use('/gpx', express.static(path.join(__dirname, 'data') , options));
 app.use('/gpx', serveIndex('data', {'icons': true}))
 
-// Make our db accessible to our router
-app.use(function(req,res,next){
-    req.MongoClient = MongoClient;
-    req.MongoUrl = url;
-    next();
-});
-
 app.use('/', routes);
-app.use('/users', users);
 app.use('/map', map);
 app.use('/api',api);
 
@@ -78,8 +60,9 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
     console.log(err.stack);
-    //res.status(err.status || 500);
+    //console.dir(error);
     res.render('error', {
       message: err.message,
       error: err
@@ -96,6 +79,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

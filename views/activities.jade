@@ -20,7 +20,7 @@ block content
     div#container
       div#sidebar
         ul#activity-list
-          li(ng-repeat="activity in activities" ng-click="log(activity._id); selected(activity._id)") {{activity.gpx.trk.name | parseActivity}} {{activity.gpx.trk.time | date : "dd.MM.y"}}
+          li(ng-repeat="activity in activities" ng-click="log(activity._id); selected(activity._id)") {{activity.gpx.trk.name | parseActivity}} {{activity.gpx.trk.time | date : "dd.MM.y HH:mm:ss"}}
       div#content(ng-hide="hide")
         p Date: <b> {{date | date : "dd.MM.y h:mm:ss a"}} </b> Length: <b> {{length}}km</b> Duration: <b> {{duration}} </b> Average pace: <b> {{averagePace}} </b>
         
