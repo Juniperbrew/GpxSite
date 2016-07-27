@@ -15,8 +15,12 @@ router.get('/upload', function(req, res, next) {
 	res.render('upload', { title: 'Upload', id: 'upload'  });
 });
 
-router.get('/tracking', function(req, res, next) {
+/*router.get('/tracking', function(req, res, next) {
 	res.render('tracking', { title: 'Tracking', id: 'tracking'  });
+});*/
+
+router.get('/websocket', function(req, res, next) {
+	res.render('websocket', { title: 'Websocket', id: 'websocket'  });
 });
 
 router.get('/db', function(req, res) {

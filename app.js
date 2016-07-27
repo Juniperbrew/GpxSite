@@ -5,16 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var serveIndex = require('serve-index')
+var socket_io    = require( "socket.io" );
+
+
+var assert = require('assert');
+
+var sse = require('./libs/sse')
+
+var app = express();
+var io           = socket_io();
+app.io           = io;
 
 var routes = require('./routes/index');
 var gpx = require('./routes/gpx');
 var map = require('./routes/map');
-var api = require('./routes/api');
-
-var assert = require('assert');
-
-var app = express();
-var sse = require('./libs/sse')
+var api = require('./routes/api')(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +36,6 @@ var options = {
     if(path.endsWith('.gpx') || path.endsWith('.csv')) res.set('Content-Type', 'text/plain');
   }
 }
-
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
