@@ -27,7 +27,8 @@ block content
             var path = [];
             var polyLine;
 
-            var socket = io('http://localhost:3000');
+            //window.location.origin probably wont work always
+            var socket = io(window.location.origin);
             socket.on('location', function (location) {
                 console.dir(location);
                 var lat = parseFloat(location.lat);
