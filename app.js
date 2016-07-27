@@ -14,6 +14,7 @@ var api = require('./routes/api');
 var assert = require('assert');
 
 var app = express();
+var sse = require('./libs/sse')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +37,7 @@ var options = {
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(sse);
 //app.use(bodyParser.urlencoded({ extended: true, limit: "1mb" }));
 app.use(cookieParser());
 

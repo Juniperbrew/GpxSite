@@ -8,6 +8,14 @@ db.connect();
 
 var upload = multer();
 
+var connections = [];
+
+router.get('/stream', function(req, res) {
+  res.sseSetup();
+  res.sseSend("test");
+  connections.push(res);
+})
+
 router.get("/activities", function(req,res) {
 	var result = db.getAllActivities(function(result){
 		res.json(result);
@@ -35,7 +43,13 @@ router.post('/location', function(req, res) {
 console.log('got POST location');
 	res.send('POST location received');
 	var value = JSON.parse(req.get('location'));
-	db.storeLocation(value);
+	//db.storeLocation(value);
+
+	//Update open connections
+	for(var i = 0; i < connections.length; i++){
+		console.log("Sent location update to client: "+i);
+		connections[i].sseSend(value);
+	}
 });
 
 module.exports = router;

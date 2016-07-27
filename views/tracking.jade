@@ -13,4 +13,55 @@ block content
     width: 800px;
     }
 
+  script.
+    var map;
+    if (!!window.EventSource) {
+      var source = new EventSource('/api/stream')
+      var marker;
+      var path = [];
+      var polyLine;
+
+      source.addEventListener('message', function(e) {
+        console.log("Received: "+ e.data);
+        var location = JSON.parse(e.data);
+        var lat = parseFloat(location.lat);
+        var lon = parseFloat(location.lon);
+        console.log(lat +","+lon);
+        if(!isNaN(lat) && !isNaN(lon)){
+
+          var pos = new google.maps.LatLng(lat,lon);
+          path.push(pos);
+
+          if(polyLine!=null){
+            polyLine.setMap(null);
+          }
+          polyLine = new google.maps.Polyline({
+            path: path,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            });
+          polyLine.setMap(map);
+
+          if(marker!=null){
+            marker.setMap(null);
+          }
+
+          marker = new google.maps.Marker({
+            position: pos,
+            map: map
+            });
+          map.setZoom(17);
+          map.panTo(pos);
+        }
+        }, false)
+      }else{
+        console.log("SSE not supported");
+      }
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'),{
+          center: new google.maps.LatLng(0, 0),
+          zoom: 1
+        });
+    }
+
   #map
