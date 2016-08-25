@@ -1,0 +1,28 @@
+extends layout
+
+block head
+
+	script(src="/js/upload/bundle.js")
+
+block content
+
+	script.
+		$(function() {
+		    $('form').submit(function() {
+		    	var data = new FormData(jQuery('form')[0]);
+		        $.ajax({
+		            type: 'POST',
+		            url: '/api/activity',
+		            data: data,
+		            processData: false,
+		            contentType: false
+		        });
+		        return false;
+		    }); 
+		})
+
+	form(method="post",enctype="multipart/form-data")
+		p
+			input(type="file",name="gpx" multiple)
+		p
+			input(type="submit")

@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
+
+    script.
+      $(function(){
+        var topPadding = $('#navbar').height();
+        document.documentElement.style.paddingTop = topPadding + "px";
+      })
+    block head
+
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(id=id)
+    div
+      ul#navbar
+        li.activities: a(href="/activities") Activities
+        li.upload: a(href="/upload") Upload
+        li.websocket: a(href="/websocket") Websocket
+        li.chat: a(href="/chat") Chat
+    h1= title
+    block content

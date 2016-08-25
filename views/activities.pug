@@ -1,0 +1,34 @@
+extends layout
+
+block head
+
+  meta(name='viewport', content='initial-scale=1.0')
+  meta(charset='utf-8')
+
+  script(src="https://www.gstatic.com/charts/loader.js")
+  script(src="/js/activities/bundle.js")
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQ9cmXz_DKbXxMQV4I9hgSq6biyU1faA&callback=initMap"
+    async defer)
+
+  style.
+    #map {
+    height: 600px;
+    width: 800px;
+    }
+
+block content
+  
+  script.
+    $('#sidebar').css("height", $(document).height());
+
+  div(ng-app="activitiesApp" ng-controller="ActivitiesController as scope")
+    div#container
+      div#sidebar
+        ul#activity-list
+          li(ng-repeat="activity in scope.activities" ng-click="scope.selected(activity._id)") {{activity.gpx.trk.name | parseActivity}} {{activity.gpx.trk.time | date : "dd.MM.y HH:mm:ss"}}
+      div#content(ng-hide="scope.hide")
+        p Date: <b> {{scope.date | date : "dd.MM.y h:mm:ss a"}} </b> Length: <b> {{scope.length}}km</b> Duration: <b> {{scope.duration}} </b> Average pace: <b> {{scope.averagePace}} </b>
+        
+        #map
+        #elevationChart
+        #paceChart

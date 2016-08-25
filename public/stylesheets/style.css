@@ -61,6 +61,11 @@ ul#navbar li:not(.active):hover {
     color: white;
 }
 
+#chat ul#navbar li.chat {
+    background-color: #4CAF50;
+    color: white;
+}
+
 ul#activity-list li:hover {
   background-color: #0066ff;
   transition: 0.2s;
