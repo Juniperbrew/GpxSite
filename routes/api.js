@@ -39,7 +39,7 @@ module.exports = function(io) {
 		//db.storeLocation(value);
 
 		//Send message to websockets
-		io.emit('location', value);
+		io.of('/tracking').emit('location', value);
 	});
 
 	return router;
