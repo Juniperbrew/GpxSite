@@ -17,6 +17,9 @@ app.io           = io;
 var routes = require('./routes/index');
 var api = require('./routes/api')(io);
 
+//Start game
+require('./modules/game')(io);
+
 //ls view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

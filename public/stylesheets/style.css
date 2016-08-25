@@ -42,30 +42,6 @@ ul#navbar li:not(.active):hover {
   cursor: pointer;
 }
 
-#activities ul#navbar li.activities {
-    background-color: #4CAF50;
-    color: white;
-}
-#upload ul#navbar li.upload {
-    background-color: #4CAF50;
-    color: white;
-}
-
-#tracking ul#navbar li.tracking {
-    background-color: #4CAF50;
-    color: white;
-}
-
-#websocket ul#navbar li.websocket {
-    background-color: #4CAF50;
-    color: white;
-}
-
-#chat ul#navbar li.chat {
-    background-color: #4CAF50;
-    color: white;
-}
-
 ul#activity-list li:hover {
   background-color: #0066ff;
   transition: 0.2s;
@@ -102,6 +78,35 @@ ul#activity-list {
 }
 
 .active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#activities ul#navbar li.activities {
+    background-color: #4CAF50;
+    color: white;
+}
+#upload ul#navbar li.upload {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#tracking ul#navbar li.tracking {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#websocket ul#navbar li.websocket {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#chat ul#navbar li.chat {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#game ul#navbar li.game {
     background-color: #4CAF50;
     color: white;
 }

@@ -22,4 +22,8 @@ router.get('/websocket', function(req, res, next) {
 	res.render('websocket', { title: 'Websocket', id: 'websocket'  });
 });
 
+router.get('/game', function(req, res, next) {
+	res.render('game', { title: 'Game', id: 'game'  });
+});
+
 module.exports = router;

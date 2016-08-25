@@ -29,11 +29,11 @@ module.exports = function(io) {
 		socket.on('request:name', function(data) {
 			console.log('Got name request from ' + chatClients[socket.id]);
 			if (userNames.claim(data)) {
+
 				var oldName = chatClients[socket.id];
 				userNames.free(oldName);
 				chatClients[socket.id] = data;
-				socket.emit('event:name-change', data);
-				chat.emit('confirm:name', {
+				chat.emit('event:name-change', {
 					old: oldName,
 					new: data
 				});

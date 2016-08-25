@@ -46,7 +46,12 @@ function ChatController($scope, socket, vars) {
 			if (index > -1) {
     			vm.users[index] = data.new;
 			}
-			vm.messages.push(data.old + ' changed name to ' + data.new + '.');
+			if(vm.name === data.old){
+				vm.messages.push('You changed name to ' + data.new + '.');
+			}else{
+				vm.messages.push(data.old + ' changed name to ' + data.new + '.');
+			}
+			
 		});
 
 		socket.on('event:join', function(data) {
