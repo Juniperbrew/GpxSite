@@ -1,0 +1,20 @@
+extends layout
+
+block head
+
+	script(src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js")
+	script.
+		var config = {
+			apiKey: "AIzaSyADk6IfGWL_Mbop0cO2CE5nNubIgzsJ7Ac",
+			authDomain: "modal-gust.firebaseapp.com",
+			databaseURL: "https://modal-gust.firebaseio.com",
+			storageBucket: "modal-gust.appspot.com",
+		};
+		firebase.initializeApp(config);
+
+	script(src="https://cdn.socket.io/socket.io-1.4.5.js")
+	script(src="/js/firebase/bundle.js")
+
+block content
+
+	#game

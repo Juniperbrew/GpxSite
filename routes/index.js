@@ -26,4 +26,8 @@ router.get('/game', function(req, res, next) {
 	res.render('game', { title: 'Game', id: 'game'  });
 });
 
+router.get('/firebase', function(req, res, next) {
+	res.render('firebase', { title: 'Firebase', id: 'firebase'  });
+});
+
 module.exports = router;

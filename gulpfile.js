@@ -26,10 +26,14 @@ var files = [
 	{
 		src: './client/apps/chat/main.js',
 		dest: './public/js/chat/bundle.js'
-	},
+	},           
 	{
 		src: './client/apps/game/main.js',
 		dest: './public/js/game/bundle.js'
+	},           
+	{
+		src: './client/apps/firebase/main.js',
+		dest: './public/js/firebase/bundle.js'
 	}
 ];
 
